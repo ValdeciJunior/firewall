@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+        <h1>Regra</h1>
+
+        <form>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" name="id" [(ngModel)]="regra.id" class="form-control" placeholder="Id">
+            </div>
+            <div class="col">
+              <input type="text" name="nome" [(ngModel)]="regra.nome" class="form-control" placeholder="Nome">
+            </div>
+            <div class="col">
+              <input type="text" name="origem" [(ngModel)]="regra.origem" class="form-control" placeholder="Origem">
+            </div>
+            <div class="col">
+              <input type="text" name="destino" [(ngModel)]="regra.destino" class="form-control" placeholder="Destino">
+            </div>
+            <div class="col">
+              <input type="text" name="direcao" [(ngModel)]="regra.direcao" class="form-control" placeholder="Direção">
+            </div>
+            <div class="col">
+              <input type="text" name="protocolo" [(ngModel)]="regra.protocolo" class="form-control" placeholder="Protocolo">
+            </div>
+            <div class="col">
+              <input type="text" name="portaInicial" [(ngModel)]="regra.portaInicial" class="form-control" placeholder="Porta Inicial">
+            </div>
+            <div class="col">
+              <input type="text" name="portaFinal" [(ngModel)]="regra.portaFinal" class="form-control" placeholder="Porta Final">
+            </div>
+            <div class="col">
+              <input type="text" name="acao" [(ngModel)]="regra.acao" class="form-control" placeholder="Ação">
+            </div>
+          </div>
+        </form>
+
+      <button type="button" (click)="addRegra()" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+        Add Regra
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+  <h1>Pacote</h1>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" name="id" [(ngModel)]="pacote.id" class="form-control" placeholder="Id">
+      </div>
+      <div class="col">
+        <input type="text" name="origem" [(ngModel)]="pacote.origem" class="form-control" placeholder="Origem">
+      </div>
+      <div class="col">
+        <input type="text" name="destino" [(ngModel)]="pacote.destino" class="form-control" placeholder="Destino">
+      </div>
+      <div class="col">
+        <input type="text" name="direcao" [(ngModel)]="pacote.direcao" class="form-control" placeholder="Direção">
+      </div>
+      <div class="col">
+        <input type="text" name="protocolo" [(ngModel)]="pacote.protocolo" class="form-control" placeholder="Protocolo">
+      </div>
+      <div class="col">
+        <input type="text" name="porta" [(ngModel)]="pacote.porta" class="form-control" placeholder="Porta">
+      </div>
+      <div class="col">
+        <input type="text" name="dados" [(ngModel)]="pacote.dados" class="form-control" placeholder="Dados">
+      </div>
+    </div>
+  </form>
+  <button type="button" (click)="addPacote()" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Add Pacote
+  </button>
+    </div>
+  </div>
+</div>
+  <hr>
+  <h1>Lista de Pacotes</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Origem</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Porta</th>
+      <th scope="col">Direção</th>
+      <th scope="col">Protocolo</th>
+      <th scope="col">Dados</th>
+      <th scope="col">Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pacotes">
+        <td>{{p.id}}</td>
+        <td>{{p.origem}}</td>
+        <td>{{p.destino}}</td>
+        <td>{{p.porta}}</td>
+        <td>{{p.direcao}}</td>
+        <td>{{p.protocolo}}</td>
+        <td>{{p.dados}}</td>
+        <td><a (click)="excluirPacote(p)" href="javascript:void(0);">Excluir</a> | <a (click)="exportarPacote(p)" href="javascript:void(0);">Exportar</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h1>Lista de Regas</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Origem</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Direção</th>
+      <th scope="col">Protocolo</th>
+      <th scope="col">Porta Inicial</th>
+      <th scope="col">Porta Final</th>
+      <th scope="col">Ação</th>
+      <th scope="col">Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let r of regras">
+      <td>{{r.id}}</td>
+      <td>{{r.nome}}</td>
+      <td>{{r.origem}}</td>
+      <td>{{r.destino}}</td>
+      <td>{{r.direcao}}</td>
+      <td>{{r.protocolo}}</td>
+      <td>{{r.portaInicial}}</td>
+      <td>{{r.portaFinal}}</td>
+      <td>{{r.acao}}</td>
+      <td><a (click)="excluirRegra(r)" class="btn btn-danger" href="javascript:void(0);">Excluir</a> | <a class="btn btn-primary btn-sm" (click)="subirPrimeiraRegra(r)" href="javascript:void(0);">Mover para primeira</a> | <a class="btn btn-secondary btn-sm" (click)="descerUltimaRegra(r)" href="javascript:void(0);">Mover para última</a> | <a (click)="exportarRegra(r)" href="javascript:void(0);">Exportar</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <button type="button" (click)="testarRegra()" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Testar Regras
+  </button>
+
+  <button type="button" (click)="refresh()" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Refresh
+  </button>
+  <br>
+  <label> Importar Pacote<input type="file" value="Importar pacote" accept=".txt" (change) = "getPacote($event)"></label>
+  <br>
+  <label>Importar Regra<input type="file" value="Importar Regra" accept=".txt" (change) = "getRegra($event)"></label>
+
